@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Json Tutorial</title>
+</head>
+<body>
+    <ul id="users"></ul>
+    <script>
+        let person = {
+            "name": "Kenyi",
+            "lastname": "Hancco",
+            "age":27
+        };
+
+        let users = [
+            {"name": "Axel", "lastname": "Hancco"},
+            {"name": "Ariana", "lastname": "Hancco"},
+            {"name": "Martha", "lastname": "Quispe"},
+            {"name": "Over", "lastname": "Hancco"}
+        ]
+        let output = '';
+
+        for (let i = 0; i < users.length; i++) {
+            output += '<li>' + users[i].name + '</li>';
+        };
+
+        document.getElementById('users').innerHTML = output;
+        
+    </script>
+</body>
+</html>
