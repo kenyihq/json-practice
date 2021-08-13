@@ -9,25 +9,44 @@
 <body>
     <ul id="users"></ul>
     <script>
-        let person = {
-            "name": "Kenyi",
-            "lastname": "Hancco",
-            "age":27
+        // let person = {
+        //     "name": "Kenyi",
+        //     "lastname": "Hancco",
+        //     "age":27
+        // };
+
+        // let users = [
+        //     {"name": "Axel", "lastname": "Hancco"},
+        //     {"name": "Ariana", "lastname": "Hancco"},
+        //     {"name": "Martha", "lastname": "Quispe"},
+        //     {"name": "Over", "lastname": "Hancco"}
+        // ]
+        // let output = '';
+
+        // for (let i = 0; i < users.length; i++) {
+        //     output += `<li> ${users[i].name} apellida ${users[i].lastname} </li>`;
+        // };
+
+        // document.getElementById('users').innerHTML = output;
+        
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              let response = JSON.parse(xhttp.responseText)
+              let users = response.users
+              let output = '';
+               
+              for (let i = 0; i < users.length; i++) {
+                  output += `<li> ${users[i].name} tiene el nickname: ${users[i].nickname} </li>`;
+              };
+       
+              document.getElementById('users').innerHTML = output;
+        
+            }
         };
-
-        let users = [
-            {"name": "Axel", "lastname": "Hancco"},
-            {"name": "Ariana", "lastname": "Hancco"},
-            {"name": "Martha", "lastname": "Quispe"},
-            {"name": "Over", "lastname": "Hancco"}
-        ]
-        let output = '';
-
-        for (let i = 0; i < users.length; i++) {
-            output += '<li>' + users[i].name + '</li>';
-        };
-
-        document.getElementById('users').innerHTML = output;
+        xhttp.open("GET", "users.json", true);
+        xhttp.send();
         
     </script>
 </body>
